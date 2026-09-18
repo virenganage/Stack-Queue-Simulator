@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stack & Queue Simulator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <p class="project-label">DATA STRUCTURES PROJECT</p>
+                <h1>Stack & Queue Simulator</h1>
+                <p class="subtitle">
+                    An interactive visualization of Stack and Queue operations
+                </p>
+                <br>
+                <p><Strong>Viren Ganage</Strong>" 2115"</p>
+                <p>DSA CCE 3</p>
+            </div>
+
+            <div class="college-badge">
+                <span>DSA</span>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Tabs -->
+
+        <section class="tabs-section">
+
+            <button class="tab active" id="stackTab">
+                <span class="tab-icon">▥</span>
+                Stack
+            </button>
+
+            <button class="tab" id="queueTab">
+                <span class="tab-icon">⇥</span>
+                Queue
+            </button>
+
+        </section>
+
+
+        <!-- ================= INTRO CARD ================= -->
+
+        <section class="intro-card">
+
+            <div>
+                <span class="section-tag" id="structureTag">
+                    LIFO
+                </span>
+
+                <h2 id="structureTitle">
+                    Stack Data Structure
+                </h2>
+
+                <p id="structureDescription">
+                    Stack follows the Last In, First Out (LIFO) principle.
+                    The element inserted last is removed first.
+                </p>
+            </div>
+
+            <div class="principle-box">
+                <strong id="principleTitle">LIFO</strong>
+                <span id="principleText">Last In → First Out</span>
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTROLS ================= -->
+
+        <section class="control-panel">
+
+            <div class="control-heading">
+                <div>
+                    <h3>Simulation Controls</h3>
+                    <p>Configure the data structure and perform operations.</p>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+
+                <div class="input-group">
+                    <label for="sizeInput">Maximum Size</label>
+
+                    <input
+                        type="number"
+                        id="sizeInput"
+                        min="1"
+                        max="20"
+                        value="5"
+                    >
+                </div>
+
+                <div class="input-group value-input">
+                    <label for="valueInput">Value</label>
+
+                    <input
+                        type="text"
+                        id="valueInput"
+                        placeholder="Enter value"
+                        maxlength="12"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Stack Controls -->
+
+            <div class="operation-buttons" id="stackControls">
+
+                <button class="operation primary" id="pushBtn">
+                    <span>＋</span>
+                    Push
+                </button>
+
+                <button class="operation" id="popBtn">
+                    <span>−</span>
+                    Pop
+                </button>
+
+                <button class="operation" id="peekBtn">
+                    <span>◉</span>
+                    Peek
+                </button>
+
+                <button class="operation" id="displayBtn">
+                    <span>▤</span>
+                    Display
+                </button>
+
+                <button class="operation secondary" id="emptyBtn">
+                    isEmpty
+                </button>
+
+                <button class="operation secondary" id="fullBtn">
+                    isFull
+                </button>
+
+                <button class="operation danger" id="clearBtn">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <!-- Queue Controls -->
+
+            <div class="operation-buttons hidden" id="queueControls">
+
+                <button class="operation primary" id="enqueueBtn">
+                    <span>＋</span>
+                    Enqueue
+                </button>
+
+                <button class="operation" id="dequeueBtn">
+                    <span>−</span>
+                    Dequeue
+                </button>
+
+                <button class="operation" id="queuePeekBtn">
+                    <span>◉</span>
+                    Peek
+                </button>
+
+                <button class="operation" id="queueDisplayBtn">
+                    <span>▤</span>
+                    Display
+                </button>
+
+                <button class="operation secondary" id="queueEmptyBtn">
+                    isEmpty
+                </button>
+
+                <button class="operation secondary" id="queueFullBtn">
+                    isFull
+                </button>
+
+                <button class="operation danger" id="queueClearBtn">
+                    Clear
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATUS ================= -->
+
+        <section class="status-card">
+
+            <div class="status-indicator"></div>
+
+            <div>
+                <span class="status-label">STATUS</span>
+                <p id="statusMessage">
+                    Ready to begin simulation.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= VISUALIZATION ================= -->
+
+        <section class="visualization-section">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="section-tag">VISUALIZATION</span>
+
+                    <h2>Data Structure</h2>
+                </div>
+
+                <div class="size-info">
+                    <span>Capacity</span>
+                    <strong id="capacityDisplay">5</strong>
+                </div>
+
+            </div>
+
+
+            <div class="visualization-area">
+
+                <!-- Stack Visualization -->
+
+                <div class="stack-container" id="stackVisualization">
+                    <!-- Generated by JavaScript -->
+                </div>
+
+
+                <!-- Queue Visualization -->
+
+                <div class="queue-container hidden" id="queueVisualization">
+                    <!-- Generated by JavaScript -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span class="stat-icon">▣</span>
+
+                <div>
+                    <span class="stat-title">Current Size</span>
+                    <strong id="currentSize">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-icon">◈</span>
+
+                <div>
+                    <span class="stat-title">Maximum Size</span>
+                    <strong id="maximumSize">5</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-icon">↟</span>
+
+                <div>
+                    <span class="stat-title" id="positionLabel">
+                        Top
+                    </span>
+
+                    <strong id="positionValue">-</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-icon">⚙</span>
+
+                <div>
+                    <span class="stat-title">Operations</span>
+                    <strong id="operationCount">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section class="history-section">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="section-tag">ACTIVITY</span>
+
+                    <h2>Operation History</h2>
+                </div>
+
+                <button class="clear-history" id="clearHistoryBtn">
+                    Clear History
+                </button>
+
+            </div>
+
+            <div class="history-box" id="historyBox">
+
+                <div class="empty-history">
+                    <span>◌</span>
+                    <p>No operations performed yet.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            Stack & Queue Simulator
+        </p>
+
+        <span>
+            Data Structures & Algorithms • College Project
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
